@@ -1,7 +1,7 @@
 """ Optixal's Neovim Init.vim
 
 """ Vim-Plug
-call plug#begin()
+call plug#begin("$HOME/.config/nvim/plugged")
 
 " Core (treesitter, nvim-lspconfig, nvim-cmp, nvim-telescope, nvim-lualine)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -47,11 +47,13 @@ Plug 'heavenshell/vim-pydocstring'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'zaki/zazen'
 Plug 'yuttie/hydrangea-vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Aesthetics - Others
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -113,7 +115,7 @@ augroup MyColors
     "autocmd ColorScheme * call TransparentBackground() " uncomment if you are using a translucent terminal and you want nvim to use that
 augroup END
 
-color dracula
+color tokyonight-night
 set termguicolors
 
 """ Core plugin configuration (vim)
@@ -191,6 +193,9 @@ nmap <leader>q :NvimTreeFindFileToggle<CR>
 nmap \ <leader>q
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 nmap <leader>t :call TrimWhitespace()<CR>
+nmap <S-t> :tabnew<CR>
+nmap <leader>p :tabprevious<CR>
+nmap <leader>n :tabnext<CR>
 xmap <leader>a gaip*
 nmap <leader>a gaip*
 nmap <leader>h :RainbowParentheses!!<CR>
@@ -208,10 +213,10 @@ nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
 autocmd Filetype python nmap <leader>d <Plug>(pydocstring)
 autocmd FileType python nmap <leader>p :Black<CR>
 
-" Solidity (requires: npm install --save-dev prettier prettier-plugin-solidity)
+" "Solidity (requires: npm install --save-dev prettier prettier-plugin-solidity)
 autocmd Filetype solidity nmap <leader>p :0,$!npx prettier %<CR>
 
-" Telescope mappings
+" "Telescope mappings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
