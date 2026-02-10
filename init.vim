@@ -5,7 +5,6 @@ call plug#begin("$HOME/.config/nvim/plugged")
 
 " Core (treesitter, nvim-lspconfig, nvim-cmp, nvim-telescope, nvim-lualine)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -40,7 +39,7 @@ Plug 'wellle/context.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Functionalities - Python
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'branch': 'main' }
 Plug 'heavenshell/vim-pydocstring'
 
 " Aesthetics - Colorschemes
@@ -165,7 +164,10 @@ let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 lua << EOF
 servers = {
     'pyright',
-    --'tsserver', -- uncomment for typescript. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers
+    'tsserver', -- uncomment for typescript. See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for other language servers
+    'lua_ls',
+    'clangd',
+    'bashls'
 }
 require('treesitter-config')
 require('nvim-cmp-config')

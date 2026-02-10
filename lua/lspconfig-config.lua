@@ -33,10 +33,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 function add_capabilities()
     for _, lsp in ipairs(servers) do
-        require('lspconfig')[lsp].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        }
+        vim.lsp.enable(lsp)
     end
 end
 
